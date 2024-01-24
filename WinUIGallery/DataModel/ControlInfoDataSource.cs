@@ -32,6 +32,9 @@ namespace JsonDataModel
     [JsonSerializable(typeof(List<IconData>))]
     internal sealed partial class SourceGenerationContext : JsonSerializerContext
     {
+        private static SourceGenerationContext _caseInsensitive;
+
+        public static SourceGenerationContext CaseInsensitive => _caseInsensitive ??= new(new JsonSerializerOptions(s_defaultOptions) { PropertyNameCaseInsensitive = true });
     }
 }
 
@@ -221,12 +224,7 @@ namespace AppUIBasics.Data
 
             var jsonText = await FileLoader.LoadText("DataModel/ControlInfoData.json");
 
-            var sourceGenOptions = new JsonSerializerOptions
-            {
-                TypeInfoResolver = JsonDataModel.SourceGenerationContext.Default,
-                PropertyNameCaseInsensitive = true
-            };
-            var controlInfoDataGroup = JsonSerializer.Deserialize(jsonText, typeof(Root), sourceGenOptions) as Root;
+            var controlInfoDataGroup = JsonSerializer.Deserialize(jsonText, JsonDataModel.SourceGenerationContext.CaseInsensitive.Root);
 
             lock (_lock)
             {

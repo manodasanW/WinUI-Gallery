@@ -43,12 +43,7 @@ namespace WinUIGallery.DesktopWap.DataModel
             {
                 if (icons.Count == 0)
                 {
-                    var sourceGenOptions = new JsonSerializerOptions
-                    {
-                        TypeInfoResolver = JsonDataModel.SourceGenerationContext.Default,
-                        PropertyNameCaseInsensitive = true
-                    };
-                    icons = JsonSerializer.Deserialize(jsonText, typeof(List<IconData>), sourceGenOptions) as List<IconData>;
+                    icons = JsonSerializer.Deserialize(jsonText, JsonDataModel.SourceGenerationContext.CaseInsensitive.ListIconData);
                 }
                 return icons;
             }

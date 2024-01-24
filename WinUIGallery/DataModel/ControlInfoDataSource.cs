@@ -14,6 +14,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AppUIBasics.Common;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using AppUIBasics.Data;
+using WinUIGallery.DesktopWap.DataModel;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model.  The property names chosen coincide with data bindings in the standard item templates.
@@ -23,12 +26,22 @@ using System.Text.Json;
 // responsiveness by initiating the data loading task in the code behind for App.xaml when the app
 // is first launched.
 
+namespace JsonDataModel
+{
+    [JsonSerializable(typeof(Root))]
+    [JsonSerializable(typeof(List<IconData>))]
+    internal sealed partial class SourceGenerationContext : JsonSerializerContext
+    {
+    }
+}
+
 namespace AppUIBasics.Data
 {
     public class Root
     {
         public ObservableCollection<ControlInfoDataGroup> Groups { get; set; }
     }
+
     /// <summary>
     /// Generic item data model.
     /// </summary>
@@ -207,10 +220,13 @@ namespace AppUIBasics.Data
             }
 
             var jsonText = await FileLoader.LoadText("DataModel/ControlInfoData.json");
-            var controlInfoDataGroup = JsonSerializer.Deserialize<Root>(jsonText, new JsonSerializerOptions
+
+            var sourceGenOptions = new JsonSerializerOptions
             {
+                TypeInfoResolver = JsonDataModel.SourceGenerationContext.Default,
                 PropertyNameCaseInsensitive = true
-            });
+            };
+            var controlInfoDataGroup = JsonSerializer.Deserialize(jsonText, typeof(Root), sourceGenOptions) as Root;
 
             lock (_lock)
             {

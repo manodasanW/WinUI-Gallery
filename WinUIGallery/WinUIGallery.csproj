@@ -10,7 +10,7 @@
         <Platforms>x86;x64;ARM64</Platforms>
         <NoWarn>8305</NoWarn>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+        <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
         <NoWarn>
             0108;   <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
             8305    <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
@@ -29,6 +29,16 @@
         <SingleProject>true</SingleProject>
         <SingleProject Condition="'$(SolutionName)' == 'WinUIGallery.DesktopWap'">false</SingleProject>
         <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
+        <WindowsSdkPackageVersion>10.0.22621.30-preview.aot8.ni-release-svc-prod3</WindowsSdkPackageVersion>
+        <IsAotCompatible>true</IsAotCompatible>
+        <PublishAot>true</PublishAot>
+        <IsTrimmable>true</IsTrimmable>
+        <CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
+        <PackageCertificateKeyFile>WinUIGallery_TemporaryKey.pfx</PackageCertificateKeyFile>
+        <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+        <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+        <IlcGenerateMstatFile>true</IlcGenerateMstatFile>
+        <IlcGenerateDgmlFile>true</IlcGenerateDgmlFile>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">

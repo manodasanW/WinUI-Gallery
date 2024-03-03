@@ -22,7 +22,7 @@ using System.ComponentModel;
 
 namespace AppUIBasics
 {
-    public abstract class ItemsPageBase : Page, INotifyPropertyChanged
+    public abstract partial class ItemsPageBase : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

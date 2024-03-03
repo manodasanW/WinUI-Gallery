@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using Microsoft.UI.Xaml.Controls;
@@ -12,7 +12,7 @@ using Microsoft.UI.Xaml.Hosting;
 namespace AppUIBasics.Common
 {
 #if WINUI_PRERELEASE
-    public class DefaultElementAnimator : ElementAnimator
+    public partial class DefaultElementAnimator : ElementAnimator
     {
         private const double DefaultAnimationDurationInMs = 300.0;
         public static double AnimationSlowdownFactor { get; set; }

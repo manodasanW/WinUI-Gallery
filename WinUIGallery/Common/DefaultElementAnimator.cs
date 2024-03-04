@@ -11,7 +11,7 @@ using Microsoft.UI.Xaml.Hosting;
 
 namespace AppUIBasics.Common
 {
-#if WINUI_PRERELEASE
+#if WINUI_PRERELEASE2
     public partial class DefaultElementAnimator : ElementAnimator
     {
         private const double DefaultAnimationDurationInMs = 300.0;

@@ -32,16 +32,26 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
-    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.7.2">
+    <PackageReference Include="Microsoft.WindowsAppSDK" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
+    <PackageReference Include="MSTest.TestAdapter" />
+    <PackageReference Include="MSTest.TestFramework" />
+    <PackageReference Include="Microsoft.TestPlatform.TestHost" />
       <ExcludeAssets>build</ExcludeAssets>
     </PackageReference>
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
+    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
+    <PackageReference Update="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
+    <PackageReference Update="MSTest.TestAdapter" Version="3.1.1" />
+    <PackageReference Update="MSTest.TestFramework" Version="3.1.1" />
+    <PackageReference Update="Microsoft.TestPlatform.TestHost" Version="17.7.2">
+      <ExcludeAssets>build</ExcludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
   <!-- 
     Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
     Tools extension to be activated for this project even if the Windows App SDK Nuget

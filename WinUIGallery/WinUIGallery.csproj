@@ -38,7 +38,7 @@
         <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
         <WindowsSdkPackageVersion>10.0.22621.30-preview.aot12.ni-release-svc-prod3</WindowsSdkPackageVersion>
         <IsAotCompatible>true</IsAotCompatible>
-        <PublishAot>true</PublishAot>
+        <!-- <PublishAot>true</PublishAot> -->
         <IsTrimmable>true</IsTrimmable>
         <CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
         <PackageCertificateKeyFile>WinUIGallery_TemporaryKey.pfx</PackageCertificateKeyFile>

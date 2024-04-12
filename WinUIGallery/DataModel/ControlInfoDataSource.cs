@@ -13,10 +13,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using AppUIBasics.Data;
-using WinUIGallery.DesktopWap.DataModel;
 using System.Threading.Tasks;
 using WinUIGallery.Common;
+using WinUIGallery.Data;
+using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
@@ -189,7 +189,7 @@ namespace WinUIGallery.Data
             }
 
             var jsonText = await FileLoader.LoadText("DataModel/ControlInfoData.json");
-            var controlInfoDataGroup = JsonSerializer.Deserialize(jsonText, RootContext.Default.Root);
+            var controlInfoDataGroup = JsonSerializer.Deserialize(jsonText, JsonDataModel.SourceGenerationContext.Default.Root);
 
             lock (_lock)
             {

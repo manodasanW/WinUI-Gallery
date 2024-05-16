@@ -33,6 +33,7 @@
         <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
         <PublishProfile>win-$(Platform).pubxml</PublishProfile>
         <!-- Note: PublishAot does not support x86. -->
+        <PublishAot>false</PublishAot>
         <PublishAot Condition="'$(PublishAot)' == '' and '$(Optimized)' == 'true' and ('$(Platform)' == 'x64' or '$(Platform)' == 'arm64')">true</PublishAot>
         <IsAotCompatible>true</IsAotCompatible>
         <IsTrimmable>true</IsTrimmable>    

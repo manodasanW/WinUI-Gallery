@@ -16,11 +16,13 @@ using System.Reflection;
 using Windows.Globalization;
 using Windows.UI.Popups;
 using WinUIGallery.Common;
+using System.Diagnostics.CodeAnalysis;
 
 namespace WinUIGallery.ControlPages
 {
     public sealed partial class CalendarViewPage : Page
     {
+        [DynamicDependency(DynamicallyAccessedMemberTypes.PublicProperties, typeof(WinUIGallery.Common.LanguageList.Language))]
         public CalendarViewPage()
         {
             this.InitializeComponent();
